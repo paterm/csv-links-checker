@@ -1,0 +1,23 @@
+{
+  "name": "links-checker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "console-dialog": "^1.0.6",
+    "csv-parser": "^3.0.0",
+    "dialog-node": "^0.2.1",
+    "iconv": "^3.0.0",
+    "iconv-lite": "^0.6.2",
+    "node-file-dialog": "^1.0.3",
+    "windows-1251": "^1.0.0",
+    "xlsx": "^0.16.9"
+  }
+}
