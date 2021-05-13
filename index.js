@@ -37,7 +37,9 @@ function getFilePath() {
   return new Promise((resolve, reject) => {
     dialog.fileselect('Выберите файл csv', 'Выбор файла', 0, (code, retVal) => {
       if (retVal.length) {
-        return resolve(`/${retVal.replaceAll(':', '/')}`)
+        let res = retVal.startsWith('Users') ? retVal : retVal.substr(retVal.indexOf('Users'), retVal.length - 1);
+
+        return resolve(`/${res.replaceAll(':', '/')}`)
       } else {
         reject('Произошла ошибка при чтении пути к файлу')
       }
@@ -49,7 +51,7 @@ function parseFile(filePath) {
   return new Promise((resolve, reject) => {
     if (!filePath) reject('Путь к файлу не может быть пустым')
 
-    fs.readFile(filePath, 'utf8',(err, data) => {
+    fs.readFile(filePath, 'utf8', (err, data) => {
       const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gm
       const string = data.replaceAll(/\r?\n|\r/g, '')
       const matches = string.match(regex)
